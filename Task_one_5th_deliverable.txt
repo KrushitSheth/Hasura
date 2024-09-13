@@ -1,0 +1,47 @@
+SQL Queries:
+
+1. Return the artist with the most number of albums
+->
+SELECT
+    a.artist_id AS artist_id,
+    a.name AS artist_name,
+    COUNT(al.album_id) AS album_count
+FROM
+    artist a
+JOIN
+    album al ON a.artist_id = al.artist_id
+GROUP BY
+    a.artist_id, a.name
+ORDER BY
+    album_count DESC
+LIMIT 1;
+
+
+2. Return the top three genres found in the dataset in descending order
+->
+SELECT 
+    g.name AS Genre, 
+    COUNT(t.track_id) AS TrackCount
+FROM 
+    genre g
+JOIN 
+    track t ON g.genre_id = t.genre_id
+GROUP BY 
+    g.genre_id, g.name
+ORDER BY 
+    TrackCount DESC
+LIMIT 3;
+
+
+3. Return the number of tracks and average run time for each media type
+->
+SELECT 
+    mt.name AS MediaType,
+    COUNT(t.track_id) AS TrackCount,
+    AVG(t.milliseconds) AS AverageRunTime
+FROM 
+    media_type mt
+JOIN 
+    track t ON mt.media_type_id = t.media_type_id
+GROUP BY 
+    mt.media_type_id, mt.name;
