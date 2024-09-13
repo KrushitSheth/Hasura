@@ -74,3 +74,4 @@ STEP 6: Click on Data > Manage and click on "Connect Database" choose postgres a
 STEP 7: Fill database name and connect database via environment variable in this case "PG_DATABASE_URL" key value pair and click on "Connect Database".
 
 STEP 8: You can now see database schema and relations and click on track all so that hasura can reduce the complexity via creating SQL statements automatically.
+
