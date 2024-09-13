@@ -1,4 +1,4 @@
-1. Describe any issues you discovered with the shared deployment artifacts and the steps you took to remediate the issue(s).
+1. Briefly describe the steps taken to configure your Hasura GraphQL Engine.
 -> Given deployment file for docker compose:
 docker-compose.yaml
 ##############################################
