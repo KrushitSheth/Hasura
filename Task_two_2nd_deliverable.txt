@@ -1,0 +1,130 @@
+Queries:
+
+1. Query request:
+query getTracks {
+  track(limit: 5, where: {genre: {name: {_eq: "Metal"}}}, offset: 50) {
+    name
+    track_id
+  }
+}
+
+Headers:
+content-type: application/json
+x-hasura-admin-secret: Pinkgreen
+
+Query Response:
+{
+  "data": {
+    "track": [
+      {
+        "name": "Trupets Of Jericho",
+        "track_id": 190
+      },
+      {
+        "name": "Machine Men",
+        "track_id": 191
+      },
+      {
+        "name": "The Alchemist",
+        "track_id": 192
+      },
+      {
+        "name": "Realword",
+        "track_id": 193
+      },
+      {
+        "name": "Free Speech For The Dumb",
+        "track_id": 408
+      }
+    ]
+  }
+}
+
+
+2. Query Request:
+query getAlbumsAsArtist{
+album {
+title
+}
+}
+
+Headers:
+content-type: application/json
+x-hasura-admin-secret: Pinkgreen
+x-hasura-role: artist
+x-hasura-artist-id: 5
+
+Query Response:
+{
+  "data": {
+    "album": [
+      {
+        "title": "Facelift"
+      }
+    ]
+  }
+}
+
+
+3. Query Request:
+query trackValue {
+track_aggregate {
+aggregate {
+sum {
+unit_price
+}
+}
+}
+}
+
+Headers:
+content-type: application/json
+x-hasura-admin-secret: Pinkgreen
+x-hasura-role: artist
+x-hasura-artist-id: 5
+
+Query Response:
+{
+  "data": {
+    "track_aggregate": {
+      "aggregate": {
+        "sum": {
+          "unit_price": 3680.97
+        }
+      }
+    }
+  }
+}
+
+
+4.
+(2) Execute a complex query of your choice, with and without caching. Share the query, the response and the response time for each.
+Query Rquest:
+query trackValue {
+track_aggregate {
+aggregate {
+sum {
+unit_price
+}
+}
+}
+}
+
+Query Response:
+{
+  "data": {
+    "track_aggregate": {
+      "aggregate": {
+        "sum": {
+          "unit_price": 3680.97
+        }
+      }
+    }
+  }
+}
+
+
+Time without cache: 49 ms
+Time with cache:
+a) 55 ms
+b) 54 ms
