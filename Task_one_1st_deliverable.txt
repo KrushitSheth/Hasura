@@ -4,11 +4,6 @@ docker-compose.yaml
 ##############################################
 version: "3.6"
 services:
-  redis:
-    image: redis:latest
-    restart: always
-    ports:
-      - "6379:6379"
   postgres:
     image: postgres:15
     restart: always
@@ -30,8 +25,6 @@ services:
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://chinook:chinook@postgres:5432/chinook
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_DEV_MODE: "true"
-      HASURA_GRAPHQL_REDIS_URL: "redis://redis:6379"
-      HASURA_GRAPHQL_RATE_LIMIT_REDIS_URL: "redis://redis:6379"
       PG_DATABASE_URL: postgres://chinook:chinook@postgres:5432/chinook
 volumes:
   db_data:
